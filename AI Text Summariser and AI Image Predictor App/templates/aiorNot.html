@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Image Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='stylesheet.css') }}">   
+</head>
+<body>
+    <h1>Enter Image URL</h1>
+    <form action="/label" method="post">
+        <input type="text" id="image-url" placeholder="Enter image URL here" name="image" />
+        <button id="submit-button" type="submit">Summarize</button>
+    </form>
+
+    {% if lst %}
+    <h3>Summary:</h3>
+    <textarea id="summary" rows="10" cols="50" readonly>{{ lst }}</textarea>
+    {% endif %}
+</body>
+</html>
