@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Image Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='stylesheet.css') }}">   
+</head>
+<body>
+    <a href="{{ url_for ('textSummarizer') }}">AI Text Summarizer</a>
+    <h1>Check The Originality Of Your Image</h1>
+    <div id="upl_img">
+    <h3>Enter the URL of the image</h3>
+    <form action="/label" method="post">
+        <input type="text" id="image-url" placeholder="Enter image URL here" name="image" value="{{ img if img else '' }}"/>
+        <button id="submit-button" type="submit">Upload</button>
+    </form>
+
+    {% if img %}
+        <h3>Image Preview:</h3>
+        <img src="{{ img }}" alt="Image" width="300px"/>
+    {% endif %}
+    </div>
+
+    <div id="pred">
+    {% if lst %}
+    <h3>The probability of  the image being AI generated</h3>
+    <textarea style="width: 250px; height: 15px;" id="summary" readonly>{{ (lst[0]['score'])*100 }} % </textarea>
+    <br>
+    <br>
+    <h3>The probability of  the image being real</h3>
+    <textarea style="width: 250px; height: 15px;" id="summary" readonly>{{ (lst[1]['score'])*100 }} % </textarea>
+    {% endif %}
+    </div>
+</body>
+</html>

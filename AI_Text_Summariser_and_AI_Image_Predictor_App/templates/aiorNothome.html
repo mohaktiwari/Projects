@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Image Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='stylesheet.css') }}">   
+</head>
+<body>
+    <a href="{{ url_for ('textSummarizer') }}">AI Text Summarizer</a>
+    <h1>Check The Originality Of Your Image</h1>
+    <br>
+    <h3></h3>
+    <form action="/label" method="post">
+        <input type="text" id="image-url" placeholder="Enter image URL here" name="image" value="{{ img if img else '' }}"/>
+        <button id="submit-button" type="submit">Upload</button>
+    </form>
+</body>
+</html>
